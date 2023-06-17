@@ -264,6 +264,8 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                 return 700;
             case IConstaint.KEY_7_COIN:
                 return 99;
+            case IConstaint.KEY_8_COIN:
+                return 25;
             default:
                 return 0;
         }

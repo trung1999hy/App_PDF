@@ -7,8 +7,8 @@ public interface IConstaint {
     public static final String KEY_4_COIN = "key_in_app_11"; // 400 coin
     public static final String KEY_5_COIN = "key_in_app_12"; // 600 coin
     public static final String KEY_6_COIN = "key_in_app_13"; // 700 coin
-
     public static final String KEY_7_COIN = "key_in_app_14"; // 99 coin
+    public static final String KEY_8_COIN = "key_in_app_15"; // 25 coin
 
     String COIN_USED_RESULT = "coin_used_result";
     String COIN_ORDER_RESULT = "coin_order_result";
