@@ -161,6 +161,18 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                         .setProductId(IConstaint.KEY_5_COIN)
                         .setProductType(INAPP)
                         .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                        .setProductId(IConstaint.KEY_7_COIN)
+                        .setProductType(INAPP)
+                        .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                        .setProductId(IConstaint.KEY_8_COIN)
+                        .setProductType(INAPP)
+                        .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                        .setProductId(IConstaint.KEY_11_COIN)
+                        .setProductType(INAPP)
+                        .build(),
 
                 //Product 6
                 QueryProductDetailsParams.Product.newBuilder()
@@ -266,6 +278,8 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                 return 99;
             case IConstaint.KEY_8_COIN:
                 return 25;
+            case IConstaint.KEY_11_COIN:
+                return 10;
             default:
                 return 0;
         }

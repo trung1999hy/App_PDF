@@ -98,6 +98,8 @@ public class PurchaseInAppAdapter extends RecyclerView.Adapter<PurchaseInAppAdap
                 return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/99 vàng");
             case IConstaint.KEY_8_COIN:
                 return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/25 vàng");
+            case IConstaint.KEY_11_COIN:
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/10 vàng");
             default:
                 return String.format(context.getResources().getString(R.string.message_purchase_one), "/0 vàng");
         }
