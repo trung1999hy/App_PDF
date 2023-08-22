@@ -121,6 +121,10 @@ public class Constants {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
+    public static final String[] READ_IMAGES_PERMISSIONS = {
+            Manifest.permission.READ_MEDIA_IMAGES
+    };
+
 
     public static final int MODIFY_STORAGE_LOCATION_CODE = 1;
 

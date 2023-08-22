@@ -21,15 +21,11 @@ android {
         }
         debug {
             debuggable true
-            minifyEnabled false
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-    dexOptions {
-        javaMaxHeapSize "4g"
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -55,6 +51,7 @@ configurations {
 }
 repositories {
     mavenCentral()
+    google()
     maven { url 'https://jitpack.io' }
     maven { url "https://repository.aspose.com/repo/" }
 }

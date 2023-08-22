@@ -92,6 +92,7 @@ import static com.hst.pdfcreator.Constants.DEFAULT_QUALITY_VALUE;
 import static com.hst.pdfcreator.Constants.IMAGE_SCALE_TYPE_ASPECT_RATIO;
 import static com.hst.pdfcreator.Constants.MASTER_PWD_STRING;
 import static com.hst.pdfcreator.Constants.OPEN_SELECT_IMAGES;
+import static com.hst.pdfcreator.Constants.READ_IMAGES_PERMISSIONS;
 import static com.hst.pdfcreator.Constants.READ_PERMISSIONS;
 import static com.hst.pdfcreator.Constants.REQUEST_CODE_FOR_READ_PERMISSION;
 import static com.hst.pdfcreator.Constants.REQUEST_CODE_FOR_WRITE_PERMISSION;
@@ -293,12 +294,18 @@ public class ImageToPdfFragment extends Fragment implements OnItemClickListener,
 
 
     private boolean isStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23 && Build.VERSION.SDK_INT < 29) {
-            return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-        } else if (Build.VERSION.SDK_INT >= 29) {
-            return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-        } else
-            return true;
+        if (Build.VERSION.SDK_INT >= 33) {
+            return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED;
+        }
+        else {
+            if (Build.VERSION.SDK_INT >= 23 && Build.VERSION.SDK_INT < 29) {
+                return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+            } else if (Build.VERSION.SDK_INT >= 29) {
+                return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+            } else
+                return true;
+        }
+
     }
 
     /**
@@ -753,15 +760,23 @@ public class ImageToPdfFragment extends Fragment implements OnItemClickListener,
     }
 
     private void getRuntimePermissions() {
-        if (Build.VERSION.SDK_INT < 29) {
+        if (Build.VERSION.SDK_INT >= 33) {
             PermissionsUtils.getInstance().requestRuntimePermissions(this,
-                    WRITE_PERMISSIONS,
+                    READ_IMAGES_PERMISSIONS,
                     REQUEST_CODE_FOR_WRITE_PERMISSION);
-        } else if (Build.VERSION.SDK_INT >= 29) {
-            PermissionsUtils.getInstance().requestRuntimePermissions(this,
-                    READ_PERMISSIONS,
-                    REQUEST_CODE_FOR_READ_PERMISSION);
         }
+        else {
+            if (Build.VERSION.SDK_INT < 29) {
+                PermissionsUtils.getInstance().requestRuntimePermissions(this,
+                        WRITE_PERMISSIONS,
+                        REQUEST_CODE_FOR_WRITE_PERMISSION);
+            } else {
+                PermissionsUtils.getInstance().requestRuntimePermissions(this,
+                        READ_PERMISSIONS,
+                        REQUEST_CODE_FOR_READ_PERMISSION);
+            }
+        }
+
     }
 
     /**
